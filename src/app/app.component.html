@@ -1,0 +1,31 @@
+<header class="site-header">
+  <nav class="navbar">
+    <a routerLink="/" class="brand">BLOGSPACE</a>
+
+    <div class="nav-links">
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Posts</a>
+      <a routerLink="/add-post" routerLinkActive="active">Write</a>
+
+      <ng-container *ngIf="!isLoggedIn">
+        <a routerLink="/login" routerLinkActive="active">Login</a>
+        <a routerLink="/register" class="register-link">Create Account</a>
+      </ng-container>
+
+      <a
+        href="#"
+        *ngIf="isLoggedIn"
+        class="logout-link"
+        (click)="logout(); $event.preventDefault()">
+        Logout
+      </a>
+    </div>
+  </nav>
+</header>
+
+<main class="content">
+  <router-outlet></router-outlet>
+</main>
+
+<footer class="site-footer">
+  <p>Blogspace &mdash; A simple Angular blog application</p>
+</footer>

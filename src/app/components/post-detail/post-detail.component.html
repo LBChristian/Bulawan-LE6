@@ -1,0 +1,26 @@
+<div class="detail-page">
+  <a routerLink="/" class="back-link">&larr; Back to all posts</a>
+
+  <div class="message error-message" *ngIf="errorMessage">
+    {{ errorMessage }}
+  </div>
+
+  <article class="post-detail" *ngIf="post">
+    <p class="post-label">ARTICLE</p>
+    <h1>{{ post.title }}</h1>
+
+    <div class="author-row">
+      <div class="author-avatar">
+        {{ post.firstName.charAt(0) }}{{ post.lastName.charAt(0) }}
+      </div>
+      <div>
+        <strong>{{ post.firstName }} {{ post.lastName }}</strong>
+        <span>{{ post.dateCreated | date:'MMMM d, y, h:mm a' }}</span>
+      </div>
+    </div>
+
+    <div class="article-body">
+      <p>{{ post.body }}</p>
+    </div>
+  </article>
+</div>

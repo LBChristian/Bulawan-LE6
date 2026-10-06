@@ -1,0 +1,42 @@
+<section class="editor-page">
+  <div class="editor-header">
+    <a routerLink="/" class="back-link">&larr; Back to posts</a>
+    <p class="eyebrow">NEW ARTICLE</p>
+    <h1>Write a Post</h1>
+    <p>Share an idea, story, update, or anything worth reading.</p>
+  </div>
+
+  <form class="editor-card" (ngSubmit)="onSubmit()">
+    <div class="field">
+      <label for="title">Title</label>
+      <input
+        id="title"
+        type="text"
+        name="title"
+        [(ngModel)]="title"
+        required
+        placeholder="Give your post a clear title">
+    </div>
+
+    <div class="field">
+      <label for="body">Body</label>
+      <textarea
+        id="body"
+        name="body"
+        rows="12"
+        [(ngModel)]="body"
+        required
+        placeholder="Start writing your post here..."></textarea>
+    </div>
+
+    <div class="editor-actions">
+      <a routerLink="/" class="cancel-button">Cancel</a>
+      <button type="submit" class="submit-button" [disabled]="submitting">
+        {{ submitting ? 'Publishing...' : 'Publish Post' }}
+      </button>
+    </div>
+
+    <p class="success" *ngIf="successMessage">{{ successMessage }}</p>
+    <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
+  </form>
+</section>

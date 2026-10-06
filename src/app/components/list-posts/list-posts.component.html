@@ -1,0 +1,41 @@
+<section class="page-heading">
+  <div>
+    <p class="eyebrow">BLOGSPACE</p>
+    <h1>Latest Posts</h1>
+    <p class="subtitle">Read what the community has been writing about.</p>
+  </div>
+
+  <a routerLink="/add-post" class="primary-button">Write a Post</a>
+</section>
+
+<div class="message error-message" *ngIf="errorMessage">
+  {{ errorMessage }}
+</div>
+
+<div class="empty-state" *ngIf="!errorMessage && posts && posts.length === 0">
+  <h2>No posts yet</h2>
+  <p>Be the first to share something with the community.</p>
+  <a routerLink="/add-post" class="primary-button">Create the First Post</a>
+</div>
+
+<section class="post-grid" *ngIf="posts && posts.length > 0">
+  <article class="post-card" *ngFor="let post of posts">
+    <div class="post-card-content">
+      <p class="post-label">ARTICLE</p>
+      <h2>
+        <a [routerLink]="['/posts', post.id]">{{ post.title }}</a>
+      </h2>
+
+      <p class="excerpt">
+        {{ post.body | slice:0:150 }}{{ post.body.length > 150 ? '...' : '' }}
+      </p>
+
+      <div class="post-meta">
+        <span>{{ post.firstName }} {{ post.lastName }}</span>
+        <span>{{ post.dateCreated | date:'MMM d, y' }}</span>
+      </div>
+
+      <a [routerLink]="['/posts', post.id]" class="read-link">Read article</a>
+    </div>
+  </article>
+</section>

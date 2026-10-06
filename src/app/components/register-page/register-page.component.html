@@ -1,0 +1,78 @@
+<section class="auth-layout">
+  <div class="auth-card">
+    <div class="auth-header">
+      <p class="eyebrow">JOIN BLOGSPACE</p>
+      <h1>Create your account</h1>
+      <p>Set up your profile to start publishing posts.</p>
+    </div>
+
+    <form name="form" (ngSubmit)="onSubmit()" #f="ngForm">
+      <div class="field">
+        <label for="username">Username</label>
+        <input
+          id="username"
+          type="text"
+          maxlength="16"
+          name="username"
+          [(ngModel)]="form.username"
+          required
+          #username="ngModel"
+          placeholder="Choose a username">
+        <small>Maximum 16 characters.</small>
+      </div>
+
+      <div class="field">
+        <label for="password">Password</label>
+        <input
+          id="password"
+          type="password"
+          maxlength="16"
+          name="password"
+          [(ngModel)]="form.password"
+          required
+          #password="ngModel"
+          placeholder="Choose a password">
+        <small>Maximum 16 characters.</small>
+      </div>
+
+      <div class="form-row">
+        <div class="field">
+          <label for="firstName">First Name</label>
+          <input
+            id="firstName"
+            type="text"
+            maxlength="50"
+            name="firstName"
+            [(ngModel)]="form.firstName"
+            required
+            #firstName="ngModel"
+            placeholder="First name">
+        </div>
+
+        <div class="field">
+          <label for="lastName">Last Name</label>
+          <input
+            id="lastName"
+            type="text"
+            maxlength="50"
+            name="lastName"
+            [(ngModel)]="form.lastName"
+            required
+            #lastName="ngModel"
+            placeholder="Last name">
+        </div>
+      </div>
+
+      <button class="submit-button" type="submit" [disabled]="!f.form.valid">
+        Create Account
+      </button>
+
+      <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
+    </form>
+
+    <p class="auth-footer">
+      Already have an account?
+      <a routerLink="/login">Sign in</a>
+    </p>
+  </div>
+</section>
